@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "A small and fast Javascript library.",
   "main": "js/index.js",
-  "keywords": ["javascript", "lunarjs", "library", "frontend"],
+  "keywords": [
+    "javascript",
+    "lunarjs",
+    "library",
+    "frontend"
+  ],
   "homepage": "https://github.com/andresn-su/lunarjs#readme",
   "license": "MIT",
   "author": {
@@ -12,6 +17,7 @@
     "url": "https://andrescript.blogspot.com"
   },
   "devDependencies": {
+    "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }
