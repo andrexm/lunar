@@ -1,0 +1,7 @@
+*[data-hidecontrols] {
+    cursor: pointer;
+}
+
+.lunar-hidden {
+    display: none;
+}
