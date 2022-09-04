@@ -5,13 +5,11 @@ import { helpers } from "./helpers.js";
  * Lunar
  */
 export class Lunar {
-    hideControllers;
-    hideable;
-
     /**
      * Constructor
      */
     constructor() {
+        // Loading helpers
         helpers.hideControllersStart();
         helpers.hideableElementsStart();
     }
