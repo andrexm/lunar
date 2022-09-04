@@ -11,7 +11,7 @@ export const helpers = {
      */
     showElement(element, show = true) {
         element.style.transition = "0.3s";
-        
+
         if (show) {
             element.classList.remove("lunar-hidden");
             setTimeout(() => {
@@ -46,6 +46,20 @@ export const helpers = {
                 //hideableTarget.classList.toggle('lunar-hidden');
                 let isHidden = hideableTarget.classList.contains('lunar-hidden')
                 this.showElement(hideableTarget, isHidden);
+            });
+        });
+    },
+
+    /**
+     * Hides all the elements after mouseleave event
+     */
+    hideOnLeave() {
+        let toHide = Array.from(document.querySelectorAll('[hideOnMouseLeave]'));
+
+        toHide.forEach(el => {
+            el.setAttribute('tabindex', '0');
+            el.addEventListener('mouseleave', () => {
+                this.showElement(el, false);
             });
         });
     },

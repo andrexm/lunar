@@ -12,6 +12,7 @@ export class Lunar {
         // Loading helpers
         helpers.hideControllersStart();
         helpers.hideableElementsStart();
+        helpers.hideOnLeave();
     }
 
     /**
