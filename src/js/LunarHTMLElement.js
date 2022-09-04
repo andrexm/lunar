@@ -41,8 +41,8 @@
      * @param {Object} closure
      */
     event(type, closure) {
-        this.pure.addEventListener(type, () => {
-            closure();
+        this.pure.addEventListener(type, target => {
+            closure(target);
         });
     }
 }
