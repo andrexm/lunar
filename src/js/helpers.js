@@ -63,4 +63,17 @@ export const helpers = {
             });
         });
     },
+
+    /**
+     * Loads links that are inside the [link] attribute
+     */
+    dynamicLinks() {
+        let links = Array.from(document.querySelectorAll('[link]'));
+        links.forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => {
+                location.href = el.getAttribute('link');
+            });
+        });
+    }
 }

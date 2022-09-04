@@ -13,6 +13,7 @@ export class Lunar {
         helpers.hideControllersStart();
         helpers.hideableElementsStart();
         helpers.hideOnLeave();
+        helpers.dynamicLinks();
     }
 
     /**
