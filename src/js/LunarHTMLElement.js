@@ -35,4 +35,15 @@
         } while (order > 0);
         return parent;
     }
+
+    /**
+     * Executes a function on the specified event
+     * @param {string} type
+     * @param {Object} closure
+     */
+    event(type, closure) {
+        this.pure.addEventListener(type, () => {
+            closure();
+        });
+    }
 }
