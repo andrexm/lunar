@@ -16,7 +16,11 @@
     "email": "andre.neospace@gmail.com",
     "url": "https://andrescript.blogspot.com"
   },
+  "scripts": {
+    "build": "npx webpack --config webpack.config.js && npx css-minify -f src/css/lunar.css -o dist/css"
+  },
   "devDependencies": {
+    "css-minify": "^2.0.0",
     "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
