@@ -30,7 +30,6 @@
         let parent = this.pure;
         do {
             parent = parent.parentElement;
-            console.log(parent)
             order--;
         } while (order > 0);
         return parent;
