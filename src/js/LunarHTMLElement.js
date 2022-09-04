@@ -4,22 +4,25 @@
  export class LunarHTMLElement {
     // The HTML Element
     pure;
-    currentChildToAdd;
-    currentChildTextToAdd;
-    currentChildHTMLContentToAdd;
-    type;
 
     /**
      * Constructor
      * @param {string} selector 
      */
-    constructor(selector) {
-        this.pure = document.querySelector(selector);
-        this.type = this.pure.nodeName.toLowerCase();
+    constructor(selector, element = false) {
+        this.pure = !element ? document.querySelector(selector) : element;
     }
 
     /**
-     * Returns the parent of order [order] of the element
+     * Returns the type of the HTML Element
+     * @returns string
+     */
+    type() {
+        return this.pure.nodeName.toLowerCase();
+    }
+
+    /**
+     * Returns the parent of order n of the element
      * @param {int} order 
      * @returns 
      */
