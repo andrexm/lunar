@@ -5,6 +5,26 @@ import { LunarHTMLElement } from "./LunarHTMLElement.js";
  */
 export const helpers = {
     /**
+     * Shows or hides an HTML element
+     * @param {HTMLElement} element 
+     * @param {boolean} show 
+     */
+    showElement(element, show = true) {
+        element.style.transition = "0.3s";
+        
+        if (show) {
+            element.classList.remove("lunar-hidden");
+            setTimeout(() => {
+                element.classList.remove("lunar-opacity-0");
+            }, 0);
+        } else {
+            element.classList.add("lunar-opacity-0");
+            element.style.transition = "0.3s";
+            setTimeout(() => element.classList.add("lunar-hidden"), 300);
+        }
+    },
+
+    /**
      * Elements that can be hidded
      */
      hideableElementsStart() {
@@ -23,7 +43,9 @@ export const helpers = {
         this.hideControllers.forEach(el => {
             el.addEventListener('click', () => {
                 let hideableTarget = (new LunarHTMLElement(el.dataset.hidecontrols)).pure;
-                hideableTarget.classList.toggle('lunar-hidden');
+                //hideableTarget.classList.toggle('lunar-hidden');
+                let isHidden = hideableTarget.classList.contains('lunar-hidden')
+                this.showElement(hideableTarget, isHidden);
             });
         });
     },
