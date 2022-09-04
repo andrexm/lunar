@@ -14,6 +14,7 @@ export class Lunar {
         helpers.hideableElementsStart();
         helpers.hideOnLeave();
         helpers.dynamicLinks();
+        helpers.hideOnClickOutside();
     }
 
     /**

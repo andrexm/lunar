@@ -43,7 +43,6 @@ export const helpers = {
         this.hideControllers.forEach(el => {
             el.addEventListener('click', () => {
                 let hideableTarget = (new LunarHTMLElement(el.dataset.hidecontrols)).pure;
-                //hideableTarget.classList.toggle('lunar-hidden');
                 let isHidden = hideableTarget.classList.contains('lunar-hidden')
                 this.showElement(hideableTarget, isHidden);
             });
@@ -60,6 +59,22 @@ export const helpers = {
             el.setAttribute('tabindex', '0');
             el.addEventListener('mouseleave', () => {
                 this.showElement(el, false);
+            });
+        });
+    },
+
+    /**
+     * Hides an element after a click outside it
+     */
+    hideOnClickOutside() {
+        let toHide = Array.from(document.querySelectorAll('[hideOnClickOutside]'));
+        
+        toHide.forEach(el => {
+            el.setAttribute('tabindex', '0');
+            document.addEventListener('click', () => {
+                if (el !== document.activeElement && !el.contains(document.activeElement) && !el.classList.contains('lunar-hidden')) {
+                    this.showElement(el, false);
+                }
             });
         });
     },
