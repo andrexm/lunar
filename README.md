@@ -1,0 +1,2 @@
+# Lunar
+Lunar is a library for creating incredible frontend projects in a very simple way. To use it, just add the styles and the scripts inside the dist folder. A better documentation to explain all its features is coming soon.
