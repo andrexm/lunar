@@ -5,3 +5,11 @@
 .lunar-hidden {
     display: none;
 }
+
+.lunar-opacity-0 {
+    opacity: 0;
+}
+
+[hideable] {
+    transition: 0.3s;
+}
