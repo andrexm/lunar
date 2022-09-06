@@ -44,4 +44,27 @@ export class Lunar {
 
         return lunarElements;
     }
+
+    /**
+     * Registers some components
+     * @param {array} components 
+     */
+    register(components) {
+        // Load the components
+        components.forEach(component => {
+            let elements = Array.from(document.querySelectorAll(component.selector));
+            elements.forEach(el => {
+                el.innerHTML = component.html;
+                
+                // Loads its classes
+                if (el.dataset.class) {
+                    let svg = el.firstElementChild;
+                    let classes = (el.dataset.class).split(' ');
+                    classes.forEach(classToAdd => {
+                        svg.classList.add(classToAdd)
+                    });
+                }
+            });
+        });
+    }
 }
