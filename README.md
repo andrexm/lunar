@@ -4,7 +4,7 @@ Lunar is a library for creating incredible frontend projects in a very simple wa
 
 ### Creating components
 
-You can create a component easly. First of all, to register a component we need to pass an array containing all the components we have created, to call the _lunar.register()_ method, which receives this array. Now, just create an array of components. A component is an object with two elements: its HTML, obviously, and its selector. See the example below:
+You can create a component easily. First of all, to register a component we need to pass an array containing all the components we have created, to call the _lunar.register()_ method, which receives this array. Now, just create an array of components. A component is an object with two elements: an HTML, obviously, and a selector. See the example below:
 
 ```html
 <app-fruits></app-fruits>
@@ -33,12 +33,14 @@ You can also pass classes to the component you are using throught its selector u
 <app-fruits data-class="p-6 mb-4 rounded-md"></app-fruits>
 ```
 
+Note that you can call the _lunar.register()_ more than one time, this does not have side effects.
+
 ### Hiding or showing elements
 
 Lunar has some very useful tools to hide or show an element. It has the following utilities:
 
 - Toggle the state of an element;
-- Hide an element after it losts the focus or click outside it;
+- Hide an element after it losts the focus or a click outside it;
 - Hide the element after moving the mouse to outside it;
 - Programatically change the element state.
 
@@ -53,9 +55,9 @@ Sometimes we need to show an element after a click on another element and hide i
 
 The _hideable_ atribute just tells that this element must start hidden, while the _data-hidecontrols_ tells which element will be controlled by this element. This way, a click on the first _div_ will show the second one, another click will hide. You can also put the _data-hidecontrols_ in more than one element to controlls the same one.
 
-#### Hide an element after it losts the focus or click outside it
+#### Hide an element after it losts the focus or a click outside it
 
-This may be a highly useful tool, sometimes. With this, a user can click on a button to show something, click on another and the first one will be hidden, because it simply lost the focus. Se the following example:
+This may be a highly useful tool, sometimes. With it, a user can click on a button to show something, click on another and the first one will be hidden, because it simply lost the focus. Se the following example:
 
 ```html
 <div hideOnClickOutside>Don't click outside me! 😾</div>
@@ -64,7 +66,7 @@ This may be a highly useful tool, sometimes. With this, a user can click on a bu
 We can combine both the two last utilities showed until now:
 
 ```html
-<div id="d" data-hidecontrols=".text">Toggle element</div>
+<div data-hidecontrols=".text">Toggle element</div>
 <div class="text" hideable hideOnClickOutside>Hello :)</div>
 ```
 
