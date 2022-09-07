@@ -10,11 +10,7 @@ export class Lunar {
      */
     constructor() {
         // Loading helpers
-        helpers.hideControllersStart();
-        helpers.hideableElementsStart();
-        helpers.hideOnLeave();
-        helpers.dynamicLinks();
-        helpers.hideOnClickOutside();
+        this.loadHelpers();
     }
 
     /**
@@ -66,5 +62,19 @@ export class Lunar {
                 }
             });
         });
+
+        // Reload the helpers
+        this.loadHelpers();
+    }
+
+    /**
+     * Loads the helpers
+     */
+    loadHelpers() {
+        helpers.hideControllersStart();
+        helpers.hideableElementsStart();
+        helpers.hideOnLeave();
+        helpers.dynamicLinks();
+        helpers.hideOnClickOutside();
     }
 }

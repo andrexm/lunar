@@ -30,7 +30,13 @@ export const helpers = {
      hideableElementsStart() {
         this.hideable = Array.from(document.querySelectorAll('[hideable]'));
         this.hideable.forEach(el => {
+            // Verify if this element is loaded
+            if (el.classList.contains('l-hes')) return;
+
             el.classList.add('lunar-hidden');
+
+            // Tells that this element is loaded
+            el.classList.add('l-hes');
         });
     },
 
@@ -41,11 +47,17 @@ export const helpers = {
         this.hideControllers = Array.from(document.querySelectorAll('[data-hidecontrols]'));
  
         this.hideControllers.forEach(el => {
+            // Verify if this element is loaded
+            if (el.classList.contains('l-shc')) return;
+
             el.addEventListener('click', () => {
                 let hideableTarget = (new LunarHTMLElement(el.dataset.hidecontrols)).pure;
                 let isHidden = hideableTarget.classList.contains('lunar-hidden')
                 this.showElement(hideableTarget, isHidden);
             });
+
+            // Tells that this element is loaded
+            el.classList.add('l-shc');
         });
     },
 
@@ -56,10 +68,16 @@ export const helpers = {
         let toHide = Array.from(document.querySelectorAll('[hideOnMouseLeave]'));
 
         toHide.forEach(el => {
+            // Verify if this element is loaded
+            if (el.classList.contains('l-shol')) return;
+
             el.setAttribute('tabindex', '0');
             el.addEventListener('mouseleave', () => {
                 this.showElement(el, false);
             });
+
+            // Tells that this element is loaded
+            el.classList.add('l-shol');
         });
     },
 
@@ -70,12 +88,18 @@ export const helpers = {
         let toHide = Array.from(document.querySelectorAll('[hideOnClickOutside]'));
         
         toHide.forEach(el => {
+            // Verify if this element is loaded
+            if (el.classList.contains('l-hoco')) return;
+
             el.setAttribute('tabindex', '0');
             document.addEventListener('click', () => {
                 if (el !== document.activeElement && !el.contains(document.activeElement) && !el.classList.contains('lunar-hidden')) {
                     this.showElement(el, false);
                 }
             });
+
+            // Tells that this element is loaded
+            el.classList.add('l-hoco');
         });
     },
 
@@ -85,10 +109,16 @@ export const helpers = {
     dynamicLinks() {
         let links = Array.from(document.querySelectorAll('[link]'));
         links.forEach(el => {
+            // Verify if this element is loaded
+            if (el.classList.contains('l-dl')) return;
+            
             el.style.cursor = 'pointer';
             el.addEventListener('click', () => {
                 location.href = el.getAttribute('link');
             });
+
+            // Tells that this element is loaded
+            el.classList.add('l-dl');
         });
     }
 }
