@@ -75,4 +75,48 @@ Sometimes is more useful to hide the element after the mouse goes away from it. 
 ```html
 <div hideOnMouseLeave>Don't forget me 😢</div>
 ```
+
 As in the previous tool, we can combine it with the _data-hidecontrols_ to create a more dynamic functionality.
+
+#### Example
+
+In this example, we have a button that shows the alert message after clicking on it. The alert message is a component that also contains another component inside it, an icon. There is two icons registered as components in this code, the first one comes from HeroIcons and the second one from Bootstrap Icons. In the HTML, the code is very clean, mainly when we need to reuse some component, like the icons of the example. Also, the alert component contains a _span_ tag, which can close the alert if clicked due to the _data-hidecontrols_ attribute with a selector pointing to the alert itself.
+
+```html
+<div class="btn-primary" data-hidecontrols="#success-msg">
+    <icon-download data-class="h-10 w-10"></icon-download> Download
+</div>
+<app-alert></app-alert>
+
+<!-- LunarJs -->
+<script src="dist/js/lunar.js"></script>
+
+<!-- Custom scripts -->
+<script>
+    let components = [
+        {
+            html: `
+                <div class="alert" hideable id="success-msg">
+                    <icon-exclamation data-class="h-10 w-10"></icon-exclamation> Downloading...
+                    <span data-hidecontrols="#success-msg">Close</span>
+                </div>`,
+            selector: 'app-alert'
+        },
+        {
+            html: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>`,
+            selector: 'icon-exclamation'
+        },
+        {
+            html: `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>`,
+            selector: 'icon-download'
+        }
+    ];
+
+    lunar.register(components);
+</script>
+```
