@@ -80,6 +80,22 @@ Sometimes is more useful to hide the element after the mouse goes away from it. 
 
 As in the previous tool, we can combine it with the _data-hidecontrols_ to create a more dynamic functionality.
 
+#### Programatically show or hide an element
+
+To do this is very simple. There is two methods, lunar.show() and lunar.hide(), to show an element and to hide an element, respectively. Both the methods receive an element, obviuosly. See the example:
+
+```html
+<button onclick="lunar.hide(lunar.el('i'))">Hide it</button>
+<button onclick="lunar.show(lunar.el('i'))">Show it</button>
+
+<i>123</i>
+
+<!-- LunarJs -->
+<script src="dist/js/lunar.js"></script>
+```
+
+You can pass to these functions both common elements and an instance of the LunarHTMLElement class. Always you select an element using the _lunar.el()_, what you get is an instance of the LunarHTMLElement class, wich has a set of very useful methods.
+
 #### Example
 
 In this example, we have a button that shows the alert message after clicking on it. The alert message is a component that also contains another component inside it, an icon. There is two icons registered as components in this code, the first one comes from HeroIcons and the second one from Bootstrap Icons. In the HTML, the code is very clean, mainly when we need to reuse some component, like the icons of the example. Also, the alert component contains a _span_ tag, which can close the alert if clicked due to the _data-hidecontrols_ attribute with a selector pointing to the alert itself.
