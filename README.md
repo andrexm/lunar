@@ -1,6 +1,6 @@
 # Lunar
 
-Lunar is a library for creating incredible frontend projects in a very simple way. To use it, just add to your project the styles and the scripts inside the dist folder. Be creative.
+Lunar is a library for creating frontend projects in a very simple way. To use it, just add to your project the styles and the scripts inside the dist folder. Be creative.
 
 ### Creating components
 
@@ -27,7 +27,7 @@ You can create a component easily. First of all, to register a component we need
 </script>
 ```
 
-You can also pass classes to the component you are using throught its selector using the __data-class__ attribute, but have in mind that, if your component has more than one element side by side, only the first one will receive that classes.
+You can also pass classes to the component you are using throught its selector using the __data-class__ attribute, but, have in mind that, if your component has more than one element side by side, only the first one will receive that classes.
 
 ```html
 <app-fruits data-class="p-6 mb-4 rounded-md"></app-fruits>
@@ -42,7 +42,7 @@ Lunar has some very useful tools to hide or show an element. It has the followin
 - Toggle the state of an element;
 - Hide an element after it losts the focus or a click outside it;
 - Hide the element after moving the mouse to outside it;
-- Programatically change the element state.
+- Programmatically change the element state.
 
 #### Toggle the state of an element
 
@@ -80,9 +80,9 @@ Sometimes is more useful to hide the element after the mouse goes away from it. 
 
 As in the previous tool, we can combine it with the _data-hidecontrols_ to create a more dynamic functionality.
 
-#### Programatically show or hide an element
+#### Programmatically show or hide an element
 
-To do this is very simple. There is two methods, lunar.show() and lunar.hide(), to show an element and to hide an element, respectively. Both the methods receive an element, obviuosly. See the example:
+To do this is very simple. There is two methods, __lunar.show()__ and __lunar.hide()__, to show an element and to hide an element, respectively. Both the methods receive an element, obviously. See the example:
 
 ```html
 <button onclick="lunar.hide(lunar.el('i'))">Hide it</button>
