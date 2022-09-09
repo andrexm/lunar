@@ -51,6 +51,15 @@ export class Lunar {
     }
 
     /**
+     * Shows an element
+     * @param {Hides an element} el 
+     */
+    show(el) {
+        if (el instanceof LunarHTMLElement) return helpers.showElement(el.pure);
+        return helpers.showElement(el);
+    }
+
+    /**
      * Registers some components
      * @param {array} components 
      */
