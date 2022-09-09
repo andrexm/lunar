@@ -94,7 +94,7 @@ To do this is very simple. There is two methods, lunar.show() and lunar.hide(), 
 <script src="dist/js/lunar.js"></script>
 ```
 
-You can pass to these functions both common elements and an instance of the LunarHTMLElement class. Always you select an element using the _lunar.el()_, what you get is an instance of the LunarHTMLElement class, wich has a set of very useful methods.
+You can pass to these functions both common elements and an instance of the LunarHTMLElement class. Always you select an element using the _lunar.el()_, what you get is an instance of the LunarHTMLElement class, which has a set of very useful methods.
 
 #### Example
 
