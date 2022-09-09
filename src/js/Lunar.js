@@ -42,6 +42,15 @@ export class Lunar {
     }
 
     /**
+     * Hides an element
+     * @param {HTMLElement|LunarHTMLElement} el 
+     */
+    hide(el) {
+        if (el instanceof LunarHTMLElement) return helpers.showElement(el.pure, false);
+        return helpers.showElement(el, false);
+    }
+
+    /**
      * Registers some components
      * @param {array} components 
      */
