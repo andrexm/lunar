@@ -11,6 +11,17 @@ const modifiers = [
     },
 
     /**
+     * Converts a timestamp to hours and minutes
+     */
+    {
+        name: 'hour',
+        action(el, timestamp) {
+            let date = new Date(Number(timestamp));
+            return date.getHours() + ":" + date.getMinutes();
+        }
+    },
+
+    /**
      * Percent - converts a number to a percent number
      */
     {
