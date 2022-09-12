@@ -134,9 +134,12 @@ export const helpers = {
             // Verify if the mods of this element are loaded
             if (el.classList.contains('l-mod')) return;
 
-            let mod = mods.find(item => item.name == el.getAttribute('mod'));
+            let params = el.getAttribute('mod').split('|');
+            params.splice(0, 1);
+            
+            let mod = mods.find(item => item.name == el.getAttribute('mod').split('|')[0]);
             if (!mod) return;
-            el.innerHTML = mod.action(el, el.textContent);
+            el.innerHTML = mod.action(el, el.textContent, params);
 
             // Tells that the mods for this element are loaded
             el.classList.add('l-mod');

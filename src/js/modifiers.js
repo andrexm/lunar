@@ -8,6 +8,20 @@ const modifiers = [
             let date = new Date(Number(timestamp));
             return date.getUTCDay() + "/" + date.getMonth() + "/" + date.getFullYear();
         }
+    },
+
+    /**
+     * Percent - converts a number to a percent number
+     */
+    {
+        name: 'percent',
+        action(el, value, params) {
+            value = String(100 * Number(value));
+            if (params.length > 0) {
+                value = value.replace('.', params[0]);
+            }
+            return value + '%';
+        }
     }
 ];
 
