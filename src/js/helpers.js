@@ -1,4 +1,5 @@
 import { LunarHTMLElement } from "./LunarHTMLElement.js";
+import modifiers from "./modifiers.js";
 
 /**
  * A collection of methods to be executed after instantiate the Lunar class
@@ -120,5 +121,26 @@ export const helpers = {
             // Tells that this element is loaded
             el.classList.add('l-dl');
         });
+    },
+
+    /**
+     * Loads all the modifiers
+     */
+    loadModifiers(customMods) {
+        let elWithMods = Array.from(document.querySelectorAll('[mod]'));
+        let mods = customMods ?? modifiers;
+
+        elWithMods.forEach(el => {
+            // Verify if the mods of this element are loaded
+            if (el.classList.contains('l-mod')) return;
+
+            let mod = mods.find(item => item.name == el.getAttribute('mod'));
+            if (!mod) return;
+            el.innerHTML = mod.action(el, el.textContent);
+
+            // Tells that the mods for this element are loaded
+            el.classList.add('l-mod');
+        });
+        // Note: all the values inside an element are passed to a modifier as a string]
     }
 }

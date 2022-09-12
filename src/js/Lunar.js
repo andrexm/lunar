@@ -5,6 +5,9 @@ import { helpers } from "./helpers.js";
  * Lunar
  */
 export class Lunar {
+    // All the custom modifiers
+    modifiers = [];
+
     /**
      * Constructor
      */
@@ -86,6 +89,15 @@ export class Lunar {
     }
 
     /**
+     * Loads and saves custom modifiers
+     * @param {array} mods 
+     */
+    registerMods(mods) {
+        this.modifiers = [...this.modifiers, ...mods];
+        helpers.loadModifiers(this.modifiers);
+    }
+
+    /**
      * Loads the helpers
      */
     loadHelpers() {
@@ -94,5 +106,7 @@ export class Lunar {
         helpers.hideOnLeave();
         helpers.dynamicLinks();
         helpers.hideOnClickOutside();
+        helpers.loadModifiers();
+        helpers.loadModifiers(this.modifiers);
     }
 }
