@@ -1,5 +1,6 @@
 import { LunarHTMLElement } from "./LunarHTMLElement.js";
 import { helpers } from "./helpers.js";
+import { Store } from "./store.js";
 
 /**
  * Lunar
@@ -8,10 +9,16 @@ export class Lunar {
     // All the custom modifiers
     modifiers = [];
 
+    // The store object
+    store;
+
     /**
      * Constructor
      */
     constructor() {
+        // Initiates the storage
+        this.store = new Store;
+
         // Loading helpers
         this.loadHelpers();
     }
