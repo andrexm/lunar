@@ -16,7 +16,7 @@ export class Store {
      * Gets all the data from the localStorage when the application starts
      */
     startState() {
-        let data = localStorage.getItem(storeName) ?? '{}';
+        let data = localStorage.getItem(this.storeName) ?? '{}';
         data = JSON.parse(data);
         this.state = data;
     }
@@ -28,7 +28,7 @@ export class Store {
      */
     save(key, value) {
         this.state[key] = value;
-        localStorage.setItem(storeName, JSON.stringify(this.state));
+        localStorage.setItem(this.storeName, JSON.stringify(this.state));
     }
 
     /**
@@ -37,6 +37,7 @@ export class Store {
      */
     remove(key) {
         delete this.state[key];
+        localStorage.setItem(this.storeName, JSON.stringify(this.state));
     }
 
     /**
