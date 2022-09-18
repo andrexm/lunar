@@ -2,7 +2,7 @@
 
 Lunar is a library for creating frontend projects in a very simple way. To use it, just add to your project the styles and the scripts inside the dist folder. Be creative.
 
-### Creating components
+## Creating components
 
 You can create a component easily. First of all, to register a component we need to pass an array containing all the components we have created, to call the _lunar.register()_ method, which receives this array. Now, just create an array of components. A component is an object with two elements: an HTML, obviously, and a selector. See the example below:
 
@@ -35,7 +35,7 @@ You can also pass classes to the component you are using throught its selector u
 
 Note that you can call the _lunar.register()_ more than one time, this does not have side effects.
 
-### Hiding or showing elements
+## Hiding or showing elements
 
 Lunar has some very useful tools to hide or show an element. It has the following utilities:
 
@@ -44,7 +44,7 @@ Lunar has some very useful tools to hide or show an element. It has the followin
 - Hide the element after moving the mouse to outside it;
 - Programmatically change the element state.
 
-#### Toggle the state of an element
+### Toggle the state of an element
 
 Sometimes we need to show an element after a click on another element and hide it after another click. We need simply to add some attributes to this purpuse:
 
@@ -55,7 +55,7 @@ Sometimes we need to show an element after a click on another element and hide i
 
 The _hideable_ atribute just tells that this element must start hidden, while the _data-hidecontrols_ tells which element will be controlled by this element. This way, a click on the first _div_ will show the second one, another click will hide. You can also put the _data-hidecontrols_ in more than one element to controlls the same one.
 
-#### Hide an element after it losts the focus or a click outside it
+### Hide an element after it losts the focus or a click outside it
 
 This may be a highly useful tool, sometimes. With it, a user can click on a button to show something, click on another and the first one will be hidden, because it simply lost the focus. Se the following example:
 
@@ -70,7 +70,7 @@ We can combine both the two last utilities showed until now:
 <div class="text" hideable hideOnClickOutside>Hello :)</div>
 ```
 
-#### Hide the element after moving the mouse to outside it
+### Hide the element after moving the mouse to outside it
 
 Sometimes is more useful to hide the element after the mouse goes away from it. For this case, there is the _hideOnMouseLeave_ attribute:
 
@@ -80,7 +80,7 @@ Sometimes is more useful to hide the element after the mouse goes away from it. 
 
 As in the previous tool, we can combine it with the _data-hidecontrols_ to create a more dynamic functionality.
 
-#### Programmatically show or hide an element
+### Programmatically show or hide an element
 
 To do this is very simple. There is two methods, __lunar.show()__ and __lunar.hide()__, to show an element and to hide an element, respectively. Both the methods receive an element, obviously. See the example:
 
@@ -96,7 +96,7 @@ To do this is very simple. There is two methods, __lunar.show()__ and __lunar.hi
 
 You can pass to these functions both common elements and an instance of the LunarHTMLElement class. Always you select an element using the _lunar.el()_, what you get is an instance of the LunarHTMLElement class, which has a set of very useful methods.
 
-#### Example
+### Example
 
 In this example, we have a button that shows the alert message after clicking on it. The alert message is a component that also contains another component inside it, an icon. There is two icons registered as components in this code, the first one comes from HeroIcons and the second one from Bootstrap Icons. In the HTML, the code is very clean, mainly when we need to reuse some component, like the icons of the example. Also, the alert component contains a _span_ tag, which can close the alert if clicked due to the _data-hidecontrols_ attribute with a selector pointing to the alert itself.
 
