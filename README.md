@@ -2,6 +2,18 @@
 
 Lunar is a library for creating frontend projects in a very simple way. To use it, just add to your project the styles and the scripts inside the dist folder. Be creative.
 
+## Table of Contents
+
+- [Lunar](#lunar)
+  - [Table of Contents](#table-of-contents)
+  - [Creating components](#creating-components)
+  - [Hiding or showing elements](#hiding-or-showing-elements)
+    - [Toggle the state of an element](#toggle-the-state-of-an-element)
+    - [Hide an element after it losts the focus or a click outside it](#hide-an-element-after-it-losts-the-focus-or-a-click-outside-it)
+    - [Hide the element after moving the mouse to outside it](#hide-the-element-after-moving-the-mouse-to-outside-it)
+    - [Programmatically show or hide an element](#programmatically-show-or-hide-an-element)
+    - [Example](#example)
+
 ## Creating components
 
 You can create a component easily. First of all, to register a component we need to pass an array containing all the components we have created, to call the _lunar.register()_ method, which receives this array. Now, just create an array of components. A component is an object with two elements: an HTML, obviously, and a selector. See the example below:
