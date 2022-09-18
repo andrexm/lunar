@@ -5,8 +5,14 @@ const modifiers = [
     {
         name: 'date',
         action(el, timestamp) {
-            let date = new Date(Number(timestamp));
-            return date.getUTCDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+            let date = new Date(Number(timestamp) * 1000);
+            let day = date.getUTCDate();
+            let month = Number(date.getMonth()) + 1;
+
+            if (Number(day) < 10) day = '0' + day;
+            if (String(month) < 10) month = '0' + month;
+
+            return day + "/" +  month + "/" + date.getUTCFullYear();
         }
     },
 
@@ -17,7 +23,7 @@ const modifiers = [
         name: 'hour',
         action(el, timestamp) {
             let date = new Date(Number(timestamp));
-            return date.getHours() + ":" + date.getMinutes();
+            return date.getUTCHours() + ":" + date.getUTCMinutes();
         }
     },
 
