@@ -13,6 +13,13 @@ Lunar is a library for creating frontend projects in a very simple way. To use i
     - [Hide the element after moving the mouse to outside it](#hide-the-element-after-moving-the-mouse-to-outside-it)
     - [Programmatically show or hide an element](#programmatically-show-or-hide-an-element)
     - [Example](#example)
+  - [Modifiers](#modifiers)
+    - [List of avaiable modifiers](#list-of-avaiable-modifiers)
+      - [Date](#date)
+      - [Hour](#hour)
+      - [Percent](#percent)
+    - [Creating your own modifier](#creating-your-own-modifier)
+  - [Links](#links)
 
 ## Creating components
 
@@ -149,4 +156,60 @@ In this example, we have a button that shows the alert message after clicking on
 
     lunar.register(components);
 </script>
+```
+
+## Modifiers
+Modifiers are a set of useful methods to work with the text content inside an element. It's like the Angular pipes, but poor. To use them, simply add the _mod_ attribute to the element, containing the name of the modifiers as its value. For instance, to convert a timestamp to a date format, just add the _mod_ attribute with the _'date'_ value:
+```html
+<div mod="date">1663525210</div>
+```
+This code will show the date in the format d/m/Y. 
+
+### List of avaiable modifiers
+There is only a few modifiers by default in this project. The current ones are:
+
+#### Date
+Just use the value _'date'_ for the _mod_ attribute, as in the above example.
+
+#### Hour
+Works like the _date_ modifier, you pass a timestamp and it will return the hour in 24h format.
+```html
+<div mod="hour">1663525210</div>
+```
+#### Percent
+It converts a decimal number to a percent value, multiplying it by 100 and adding the _%_ character. This modifier has a difference: we can pass an argument to it. To do this, just add a '|' (pipe) separanting the name of the mod and its params.
+```html
+<div mod="percent">0.8923</div>
+<div mod="percent|,">0.8923</div>
+```
+As you can see, the param is the character to take the place of the '.' in the value. It is just a detail, but it can make a difference between different languages.
+
+### Creating your own modifier
+A modifier is an object containing 2 elements: a name and an action. The 'name' is, obviously, the name of the modifier, that you pass to the _mod_ attribute. The action is a function that receives the element calling the modifier, the text content and the params passed to this modifier, respectively, returning the result. See below an example of mod.
+```javascript
+// The modifier
+const mod = {
+    name: 'upper',
+    action(el, value, params) {
+        return value.toUppercase();
+    }
+};
+
+// Registering it
+lunar.registerMods([mod]);
+```
+
+The HTML:
+```html
+<div mod="upper">I'm not screaming!</div>
+```
+
+This is just a very simple example, you can make a lot of stuff with this tools, including working with the element containing that text, due to the fact that it is passed to the action. Note that, the params is an array, so, if you want to pass multiple params to that action, you need to separate each one by a pipe in the HTML.
+
+## Links
+Sometimes, maybe useful to add an anchor to an element that is no an _a_ HTML tag, just for simplicity. For that cases, the _link_ attribute can be useful, just pass the link you need inside it, removing the necessity to write the Javascript code to listen to a click and redirecting the page.
+```html
+<div class="card" link="https://google.com/">
+    ...
+</div>
 ```
