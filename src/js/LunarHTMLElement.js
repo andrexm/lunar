@@ -106,6 +106,31 @@
     }
 
     /**
+     * @returns string
+     */
+    get id() {
+        return this.pure.id;
+    }
+
+    /**
+     * @param {string} markup 
+     * @returns string|void
+     */
+    html(markup = null) {
+        if (!markup) return this.pure.innerHTML;
+        this.pure.innerHTML = markup;
+    }
+
+    /**
+     * @param {string} content 
+     * @returns string|void
+     */
+    text(content = null) {
+        if (!content) return this.pure.textContent;
+        this.pure.textContent = content;
+    }
+
+    /**
      * Executes a function on the specified event
      * @param {string} type
      * @param {Object} closure
