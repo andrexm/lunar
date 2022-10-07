@@ -68,6 +68,20 @@ export class Lunar {
         if (el instanceof LunarHTMLElement) return helpers.showElement(el.pure);
         return helpers.showElement(el);
     }
+    
+    /**
+     * Hides or shows an element
+     * @param {Element} element 
+     */
+    toggle(element) {
+        if (el instanceof LunarHTMLElement) element = element.pure;
+        
+        if (!element.classList.contains('lunar-hidden')) {
+            lunar.hide(element);
+        } else {
+            lunar.show(element);
+        }
+    }
 
     /**
      * Registers some components
