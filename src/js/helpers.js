@@ -35,6 +35,7 @@ export const helpers = {
             if (el.classList.contains('l-hes')) return;
 
             el.classList.add('lunar-hidden');
+            el.classList.add('lunar-opacity-0');
 
             // Tells that this element is loaded
             el.classList.add('l-hes');
@@ -53,7 +54,7 @@ export const helpers = {
 
             el.addEventListener('click', () => {
                 let hideableTarget = (new LunarHTMLElement(el.dataset.hidecontrols)).pure;
-                let isHidden = hideableTarget.classList.contains('lunar-hidden')
+                let isHidden = hideableTarget.classList.contains('lunar-hidden');
                 this.showElement(hideableTarget, isHidden);
             });
 
