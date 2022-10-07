@@ -27,7 +27,7 @@
     /**
      * Returns the parent of order n of the element
      * @param {int} order 
-     * @returns 
+     * @returns Element
      */
     parent(order = 1) {
         let parent = this.pure;
@@ -36,6 +36,20 @@
             order--;
         } while (order > 0);
         return lunar.el(parent);
+    }
+
+    /**
+     * @returns NodeList
+     */
+    get nodes() {
+        return this.pure.childNodes;
+    }
+
+    /**
+     * @returns HTMLCollection
+     */
+    get children() {
+        return this.pure.children;
     }
 
     /**
