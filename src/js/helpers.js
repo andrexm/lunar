@@ -72,7 +72,7 @@ export const helpers = {
      * Executes a function (closure) everytime we click outside the specified element
      * @param {Element} element The element to be verified
      * @param {object} closure The function to be executed
-     * @returns 
+     * @returns void
      */
     clickOutside(element, closure) {
         // Avoid executing the same listener more than one time

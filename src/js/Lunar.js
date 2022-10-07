@@ -95,6 +95,16 @@ export class Lunar {
     }
 
     /**
+     * Executes a closure on a click outside the given element
+     * @param {object|LunarHTMLElement} element 
+     * @param {object} closure 
+     * @returns void
+     */
+    clickOut(element, closure) {
+        helpers.clickOutside(this.isPure(element) ? element : element.pure, closure);
+    }
+
+    /**
      * Registers some components
      * @param {array} components 
      */
