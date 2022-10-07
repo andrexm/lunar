@@ -53,6 +53,59 @@
     }
 
     /**
+     * The first element child
+     * @returns LunarHTMLElement
+     */
+    get firstEl() {
+        return lunar.el(this.pure.firstElementChild);
+    }
+
+    /**
+     * The last element child
+     * @returns LunarHTMLElement
+     */
+    get lastEl() {
+        return lunar.el(this.pure.lastElementChild);
+    }
+
+    /**
+     * The first child
+     * @returns LunarHTMLElement
+     */
+    get firstNode() {
+        return this.pure.firstChild;
+    }
+
+    /**
+     * The last child
+     * @returns LunarHTMLElement
+     */
+    get lastNode() {
+        return this.pure.lastChild;
+    }
+
+    /**
+     * Returns a node sibling before or after the element
+     * @param {number} order 
+     * @returns LunarHTMLElement|Node
+     */
+    sibling(order = 1) {
+        let el = this.pure;
+
+        if (order > 0) do {
+            el = el.nextSibling;
+            order--;
+        } while (order > 0);
+
+        if (order < 0) do {
+            el = el.previousSibling;
+            order++;
+        } while (order < 0);
+
+        return (el instanceof Element) ? lunar.el(el) : el;
+    }
+
+    /**
      * Executes a function on the specified event
      * @param {string} type
      * @param {Object} closure
@@ -76,6 +129,7 @@
     get height() {
         return this.pure.clientHeight;
     }
+
 
     // CLASSES -----------------------------------------
 
