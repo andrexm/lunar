@@ -35,7 +35,7 @@
             parent = parent.parentElement;
             order--;
         } while (order > 0);
-        return parent;
+        return lunar.el(parent);
     }
 
     /**
