@@ -25,6 +25,59 @@
     }
 
     /**
+     * @returns string
+     */
+    get id() {
+        return this.pure.id;
+    }
+
+    /**
+     * @param {string} markup 
+     * @returns string|void
+     */
+    html(markup = null) {
+        if (!markup) return this.pure.innerHTML;
+        this.pure.innerHTML = markup;
+    }
+
+    /**
+     * @param {string} content 
+     * @returns string|void
+     */
+    text(content = null) {
+        if (!content) return this.pure.textContent;
+        this.pure.textContent = content;
+    }
+
+    /**
+     * Executes a function on the specified event
+     * @param {string} type
+     * @param {Object} closure
+     */
+    event(type, closure) {
+        this.pure.addEventListener(type, target => {
+            closure(target);
+        });
+    }
+
+    /**
+     * @returns number
+     */
+    get width() {
+        return this.pure.clientWidth;
+    }
+
+    /**
+     * @returns number
+     */
+    get height() {
+        return this.pure.clientHeight;
+    }
+
+
+    // RELATED NODES --------------------------------------
+
+    /**
      * Returns the parent of order n of the element
      * @param {int} order 
      * @returns Element
@@ -103,56 +156,6 @@
         } while (order < 0);
 
         return (el instanceof Element) ? lunar.el(el) : el;
-    }
-
-    /**
-     * @returns string
-     */
-    get id() {
-        return this.pure.id;
-    }
-
-    /**
-     * @param {string} markup 
-     * @returns string|void
-     */
-    html(markup = null) {
-        if (!markup) return this.pure.innerHTML;
-        this.pure.innerHTML = markup;
-    }
-
-    /**
-     * @param {string} content 
-     * @returns string|void
-     */
-    text(content = null) {
-        if (!content) return this.pure.textContent;
-        this.pure.textContent = content;
-    }
-
-    /**
-     * Executes a function on the specified event
-     * @param {string} type
-     * @param {Object} closure
-     */
-    event(type, closure) {
-        this.pure.addEventListener(type, target => {
-            closure(target);
-        });
-    }
-
-    /**
-     * @returns number
-     */
-    get width() {
-        return this.pure.clientWidth;
-    }
-
-    /**
-     * @returns number
-     */
-    get height() {
-        return this.pure.clientHeight;
     }
 
 
