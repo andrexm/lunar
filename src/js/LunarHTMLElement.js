@@ -63,6 +63,20 @@
         });
     }
 
+    /**
+     * @returns number
+     */
+    get width() {
+        return this.pure.clientWidth;
+    }
+
+    /**
+     * @returns number
+     */
+    get height() {
+        return this.pure.clientHeight;
+    }
+
     // CLASSES -----------------------------------------
 
     /**
