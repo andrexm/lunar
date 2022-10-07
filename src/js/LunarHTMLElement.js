@@ -7,10 +7,10 @@
 
     /**
      * Constructor
-     * @param {string} selector 
+     * @param {string|object} selector 
      */
-    constructor(selector, element = false) {
-        this.pure = !element ? document.querySelector(selector) : element;
+    constructor(selector) {
+        this.pure = (typeof selector !== "object") ? document.querySelector(selector) : selector;
     }
 
     /**
