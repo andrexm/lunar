@@ -93,8 +93,8 @@ export const helpers = {
             if (el.classList.contains('l-hoco')) return;
 
             el.setAttribute('tabindex', '0');
-            document.addEventListener('click', () => {
-                if (el !== document.activeElement && !el.contains(document.activeElement) && !el.classList.contains('lunar-hidden')) {
+            document.addEventListener('click', e => {
+                if (!el.parentNode.contains(e.target) && el !== document.activeElement && !el.contains(document.activeElement) && !el.classList.contains('lunar-hidden')) {
                     this.showElement(el, false);
                 }
             });
