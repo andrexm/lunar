@@ -24,6 +24,15 @@ export class Lunar {
     }
 
     /**
+     * Returns if the object is a 'pure element' or an instance of the LunarHTMLElement class
+     * @param {object} element 
+     * @returns bool
+     */
+    isPure(element) {
+        return !(element instanceof LunarHTMLElement);
+    }
+
+    /**
      * Selects an element
      */
      el(selector) {
@@ -56,7 +65,7 @@ export class Lunar {
      * @param {HTMLElement|LunarHTMLElement} el 
      */
     hide(el) {
-        if (el instanceof LunarHTMLElement) return helpers.showElement(el.pure, false);
+        if (!this.isPure(el)) return helpers.showElement(el.pure, false);
         return helpers.showElement(el, false);
     }
 
@@ -65,7 +74,7 @@ export class Lunar {
      * @param {Hides an element} el 
      */
     show(el) {
-        if (el instanceof LunarHTMLElement) return helpers.showElement(el.pure);
+        if (!this.isPure(el)) return helpers.showElement(el.pure);
         return helpers.showElement(el);
     }
     
@@ -75,12 +84,12 @@ export class Lunar {
      */
     toggle() {
         Array.from(arguments).forEach(element => {
-            if (element instanceof LunarHTMLElement) element = element.pure;
+            let el = this.isPure(element) ? element : element.pure;
         
-            if (!element.classList.contains('lunar-hidden')) {
-                lunar.hide(element);
+            if (!el.classList.contains('lunar-hidden')) {
+                this.hide(el);
             } else {
-                lunar.show(element);
+                this.show(el);
             }
         });
     }
