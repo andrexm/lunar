@@ -56,10 +56,33 @@ export const helpers = {
                 let hideableTarget = (new LunarHTMLElement(el.dataset.hidecontrols)).pure;
                 let isHidden = hideableTarget.classList.contains('lunar-hidden');
                 this.showElement(hideableTarget, isHidden);
+
+                // Closes the hideableTarget element after clicking outside it and outside the 'el'
+                this.clickOutside(hideableTarget, e => {
+                    if (e.target !== el) this.showElement(hideableTarget, false);
+                });
             });
 
             // Tells that this element is loaded
             el.classList.add('l-shc');
+        });
+    },
+
+    /**
+     * Executes a function (closure) everytime we click outside the specified element
+     * @param {Element} element The element to be verified
+     * @param {object} closure The function to be executed
+     * @returns 
+     */
+    clickOutside(element, closure) {
+        // Avoid executing the same listener more than one time
+        if (element.classList.contains('rcoutside')) return;
+        element.classList.add('rcoutside');
+
+        document.addEventListener('click', e => {
+            if (!element.contains(e.target) && element !== e.target) {
+                closure(e);
+            }
         });
     },
 
