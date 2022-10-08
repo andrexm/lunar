@@ -86,6 +86,15 @@
         return this.pure.clientHeight;
     }
 
+    /**
+     * Shows or hides itself
+     * @returns LunarHTMLElement
+     */
+    toggle() {
+        lunar.toggle(this);
+        return this;
+    }
+
 
     // RELATED NODES --------------------------------------
 
