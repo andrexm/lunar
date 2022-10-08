@@ -53,7 +53,7 @@ export class Lunar {
         elements.forEach(el => {
             lunarElements = [
                 ...lunarElements,
-                (new LunarHTMLElement(false, el))
+                (new LunarHTMLElement(el))
             ];
         });
 
