@@ -232,6 +232,16 @@
         return this;
     }
 
+    /**
+     * @returns LunarHTMLElement
+     */
+    prepend() {
+        lunar.iterate(Array.from(arguments), el => {
+            this.pure.prepend(el);
+        });
+        return this;
+    }
+
 
     // CLASSES -----------------------------------------
 
