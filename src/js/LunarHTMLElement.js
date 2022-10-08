@@ -236,12 +236,14 @@
     }
 
     /**
-     * Toggles a class from the element
+     * Toggles one or more classes from the element
      * @param {string} name the class name
      * @returns LunarHTMLElement
      */
-    toggleClass(name) {
-        this.pure.classList.toggle(name);
+    toggleClass() {
+        Array.from(arguments).forEach(name => {
+            this.pure.classList.toggle(name);
+        });
         return this;
     }
 
