@@ -182,6 +182,18 @@
         return this;
     }
 
+    /**
+     * Inserts a set of Node objects after the last child of this element
+     * @returns LunarHTMLElement
+     */
+    append() {
+        Array.from(arguments).forEach(el => {
+            el = lunar.isPure(el) ? el : el.pure;
+            this.pure.append(el);
+        });
+        return this;
+    }
+
 
     // CLASSES -----------------------------------------
 
