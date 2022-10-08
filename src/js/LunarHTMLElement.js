@@ -62,6 +62,18 @@
     }
 
     /**
+     * If this element has all of the given attributes
+     * @returns bool
+     */
+    hasAttr() {
+        let has = true;
+        Array.from(arguments).forEach(attr => {
+            has = has && (this.pure.hasAttribute(attr));
+        });
+        return has;
+    }
+
+    /**
      * Executes a function on the specified event
      * @param {string} type
      * @param {Object} closure
