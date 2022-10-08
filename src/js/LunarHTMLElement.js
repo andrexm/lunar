@@ -74,6 +74,14 @@
     }
 
     /**
+     * @param {string} name 
+     */
+    removeAttr(name) {
+        this.pure.removeAttribute(name);
+        return this;
+    }
+
+    /**
      * @param {string} selectors valid css selectors
      * @returns 
      */
@@ -112,6 +120,23 @@
      */
     toggle() {
         lunar.toggle(this);
+        return this;
+    }
+
+    /**
+     * The element appears on the top of the visible area 
+     * @param {object} opts scrollIntoViewOptions
+     */
+    appear(opts = null) {
+        !opts ? this.pure.scrollIntoView() : this.pure.scrollIntoView(opts);
+        return this;
+    }
+
+    /**
+     * @returns LunarHTMLElement
+     */
+    click() {
+        this.pure.click();
         return this;
     }
 
@@ -240,6 +265,24 @@
             this.pure.prepend(el);
         });
         return this;
+    }
+
+    /**
+     * Selects an node object from inside this element
+     * @param {string} selector 
+     * @returns Node
+     */
+    el(selector) {
+        return lunar.el(selector);
+    }
+
+    /**
+     * Selects all nodes matching the given string from inside this element
+     * @param {string} selector 
+     * @returns Node
+     */
+    all(selector, pure = false) {
+        return lunar.all(selector, pure);
     }
 
 
