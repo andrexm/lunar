@@ -89,6 +89,16 @@ export class Lunar {
         if (!this.isPure(el)) return helpers.showElement(el.pure);
         return helpers.showElement(el);
     }
+
+    /**
+     * The element to appears on the top of the visible area
+     * @param {string} selector the element selector
+     * @param {object} opts scrollIntoViewOptions
+     * @returns LunarHTMLElement
+     */
+    appear(selector, opts = null) {
+        return lunar.el(selector).appear(opts);
+    }
     
     /**
      * Hides or shows an element
