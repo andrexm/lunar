@@ -50,6 +50,18 @@
     }
 
     /**
+     * Returns or sets a attribute value
+     * @param {string} name 
+     * @param {string} value 
+     * @returns {string|LunarHTMLElement}
+     */
+    attr(name, value = null) {
+        if (!value) return this.pure.getAttribute(name);
+        this.pure.setAttribute(name, value);
+        return this;
+    }
+
+    /**
      * Executes a function on the specified event
      * @param {string} type
      * @param {Object} closure
