@@ -175,8 +175,7 @@
      * @param {LunarHTMLElement[]|Node[]} arguments 
      */
     after() {
-        Array.from(arguments).forEach(el => {
-            el = lunar.isPure(el) ? el : el.pure;
+        lunar.iterate(Array.from(arguments), el => {
             this.pure.after(el);
         });
         return this;
@@ -187,8 +186,7 @@
      * @param {LunarHTMLElement[]|Node[]} arguments 
      */
     before() {
-        Array.from(arguments).forEach(el => {
-            el = lunar.isPure(el) ? el : el.pure;
+        lunar.iterate(Array.from(arguments), el => {
             this.pure.before(el);
         });
         return this;
@@ -199,8 +197,7 @@
      * @returns LunarHTMLElement
      */
     append() {
-        Array.from(arguments).forEach(el => {
-            el = lunar.isPure(el) ? el : el.pure;
+        lunar.iterate(Array.from(arguments), el => {
             this.pure.append(el);
         });
         return this;

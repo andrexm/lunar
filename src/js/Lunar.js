@@ -33,6 +33,18 @@ export class Lunar {
     }
 
     /**
+     * A loop where the closure object receives the pure element or node in each iteration
+     * @param {LunarHTMLElement[]|Node[]} elements 
+     * @param {*} closure 
+     */
+    iterate(elements, closure) {
+        elements.forEach(el => {
+            el = lunar.isPure(el) ? el : el.pure;
+            closure(el);
+        });
+    }
+
+    /**
      * Selects an element
      */
      el(selector) {
