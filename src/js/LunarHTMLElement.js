@@ -74,6 +74,14 @@
     }
 
     /**
+     * @param {string} selectors valid css selectors
+     * @returns 
+     */
+    matches(selectors) {
+        return this.pure.matches(selectors);
+    }
+
+    /**
      * Executes a function on the specified event
      * @param {string} type
      * @param {Object} closure
