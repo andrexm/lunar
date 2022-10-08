@@ -158,6 +158,30 @@
         return (el instanceof Element) ? lunar.el(el) : el;
     }
 
+    /**
+     * Inserts one or multiple elements or nodes after this element
+     * @param {LunarHTMLElement[]|Node[]} arguments 
+     */
+    after() {
+        Array.from(arguments).forEach(el => {
+            el = lunar.isPure(el) ? el : el.pure;
+            this.pure.after(el);
+        });
+        return this;
+    }
+
+    /**
+     * Inserts one or multiple elements or nodes before this element
+     * @param {LunarHTMLElement[]|Node[]} arguments 
+     */
+    before() {
+        Array.from(arguments).forEach(el => {
+            el = lunar.isPure(el) ? el : el.pure;
+            this.pure.before(el);
+        });
+        return this;
+    }
+
 
     // CLASSES -----------------------------------------
 
