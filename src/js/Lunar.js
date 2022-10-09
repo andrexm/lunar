@@ -48,7 +48,9 @@ export class Lunar {
      * Selects an element
      */
      el(selector) {
-        return (new LunarHTMLElement(selector));
+        let e = (new LunarHTMLElement(selector));
+        if (!e.pure) return null;
+        return e;
     }
 
     /**
