@@ -21,6 +21,12 @@ export class Lunar {
 
         // Loading helpers
         this.loadHelpers();
+
+        // Ends the page loader
+        window.addEventListener('load', () => {
+            let loader = lunar.el('ln-back-loader');
+            loader ? loader.toggle() : '';
+        });
     }
 
     /**

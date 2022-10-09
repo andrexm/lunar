@@ -13,3 +13,36 @@
 [hideable] {
     transition: 0.3s;
 }
+
+/* Loader */
+ln-back-loader {
+    --bgcolor: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bgcolor);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+ln-loader {
+    --color: #3498db;
+    --radius: 16px;
+    --speed: .8s;
+    display: block;
+    width: calc(2 * var(--radius));
+    height: calc(2 * var(--radius));
+    border: solid #f3f3f3 3px;
+    border-top: solid var(--color) 3px;
+    border-radius: 50%;
+    animation: spin var(--speed) linear infinite;
+}
+
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
