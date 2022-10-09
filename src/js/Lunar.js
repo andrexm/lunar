@@ -73,6 +73,16 @@ export class Lunar {
     }
 
     /**
+     * Creates a new element
+     * @param {string} type the element type
+     * @returns LunarHTMLElement
+     */
+    create(type) {
+        let el = document.createElement(type);
+        return this.el(el);
+    }
+
+    /**
      * Hides an element
      * @param {HTMLElement|LunarHTMLElement} el 
      */
