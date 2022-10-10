@@ -285,6 +285,15 @@
         return lunar.all(selector, pure);
     }
 
+    /**
+     * Verify if this element contains that given one
+     * @param {Node} element 
+     * @returns boolean
+     */
+    contains(element) {
+        return this.pure.contains(element);
+    }
+
 
     // CLASSES -----------------------------------------
 
