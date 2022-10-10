@@ -287,10 +287,11 @@
 
     /**
      * Verify if this element contains that given one
-     * @param {Node} element 
+     * @param {Node|LunarElement} element 
      * @returns boolean
      */
     contains(element) {
+        element = isPure(element) ? element : element.pure;
         return this.pure.contains(element);
     }
 
