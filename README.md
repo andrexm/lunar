@@ -6,6 +6,17 @@ Lunar is a library for creating frontend projects in a very simple way. To use i
 
 - [Lunar](#lunar)
   - [Table of Contents](#table-of-contents)
+  - [The basic Lunar methods](#the-basic-lunar-methods)
+    - [el()](#el)
+    - [all()](#all)
+    - [isPure()](#ispure)
+    - [iterate()](#iterate)
+    - [create()](#create)
+    - [hide()](#hide)
+    - [show()](#show)
+    - [toggle()](#toggle)
+    - [appear()](#appear)
+    - [clickOut()](#clickout)
   - [Creating components](#creating-components)
   - [Hiding or showing elements](#hiding-or-showing-elements)
     - [Toggle the state of an element](#toggle-the-state-of-an-element)
@@ -20,6 +31,95 @@ Lunar is a library for creating frontend projects in a very simple way. To use i
       - [Percent](#percent)
     - [Creating your own modifier](#creating-your-own-modifier)
   - [Links](#links)
+
+## The basic Lunar methods
+The Lunar provides a set of very useful methods, that you can use to add and extend the functionalities of your scripts, creating interactive components easily. In this documentation, the Node
+
+### el()
+It returns the first element matching the selector passed to it, it means, it simple does the same thing as the _document.querySelector()_ method, but it returns the element inside an instance of the __LunarElement__ class.
+```javascript
+let el = lunar.el('div');
+console.log(el);
+```
+The _pure_ property returns the original Node object:
+```javascript
+console.log(el.pure); // <div></div>
+```
+
+### all()
+It does the same as the _el()_ method, but returns all the ocurrencies for the given selector, just like the _document.querySelectorAll()_, but in array form. You can also pass a second argument, to make this method return an array of Node objects.
+```javascript
+let divs = lunar.all('div');
+let pureDivs = lunar.all('div', true);
+
+console.log(divs);
+console.log(pureDivs);
+```
+
+### isPure()
+This method verify if the given element is a LunarElement or a "pure" Node, such as HTML elements or SVG elements. It returns false if the element is a LunarElement, and true in other cases.
+```javascript
+let el = document.querySelector('div');
+console.log(lunar.isPure(el)); // true
+```
+
+### iterate()
+This method is used in cases you have an array of LunarElement instances and you have to iterate in each of their pure elements, ignoring the LunarElement instance. See the example:
+```javascript
+let divs = lunar.all('div');
+lunar.iterate(divs, div => {
+  console.log(typeof div);
+});
+```
+
+### create()
+It creates a new Node object which is returned as a LunarElement object. You can do with almost anything it is possible with Node objects very easily. See the list of LunarElement methods.
+```javascript
+let div = lunar.create('div');
+```
+
+### hide()
+This method is used to hide an element from the page, you can pass to it Element objects or LunarElement objects. When an element is hided by this or similiar methods, it receives the _lunar-hidden_ and the _lunar-opacity-0_ classes, responsible to hide the element followed by a transition effect.
+```javascript
+let div = lunar.el('div');
+
+lunar.hide(div); // or
+lunar.hide(div.pure);
+```
+
+### show()
+It does the inverse effect of the _hide()_ method, it means, if you have an hidden element, you can use this method to show again that element:
+```javascript
+lunar.hide(div);
+lunar.show(div);
+```
+
+### toggle()
+Finally, we have a method that does the both effects of the two previous methods. For example, the following code shows and hides an element on each 1s:
+```javascript
+setInterval(() => {
+  lunar.toggle(div);
+}, 1000);
+```
+
+### appear()
+This method simply scrolls the page until the given element is visible and on top of the page. The first parameter is the object to be visible, and the second one is an optional scrollIntoViewOptions object.
+```javascript
+let contact = lunar.el('#contactInfo');
+lunar.appear(contact);
+```
+
+### clickOut()
+This is a very useful methods, that can give you the ability to create very interactive elements. It simply receives an element (Element or LunarElement) and a closure. Everytime the user click in a element that is not that given one, that closure will be executed, and this maybe very powerful. See the example:
+```javascript
+let dd = lunar.el('#dropdown');
+
+lunar.clickOut(dd, e => {
+  if (!dd.contains(e.target))
+    lunar.hide(dd);
+});
+```
+In this example, we listen for a click in a element that is not the _dd_ element, and we pass a closure (the handle function) to handle this event. This closure receives a parameter (it uses the addEventListener method), that is an object describing that event. Inside that closure, we verify if the target element is an element inside _dd_, just to be sure that the click was outside it, and we call the hide() method in case of a click outside it. See the documentation about the [addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
 
 ## Creating components
 
