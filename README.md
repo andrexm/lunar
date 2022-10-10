@@ -17,10 +17,48 @@ Lunar is a library for creating frontend projects in a very simple way. To use i
     - [toggle()](#toggle)
     - [appear()](#appear)
     - [clickOut()](#clickout)
+  - [The Lunar Elements](#the-lunar-elements)
+    - [About the element](#about-the-element)
+      - [type](#type)
+      - [id](#id)
+      - [html()](#html)
+      - [text()](#text)
+      - [attr()](#attr)
+      - [hasAttr()](#hasattr)
+      - [removeAttr()](#removeattr)
+      - [matches()](#matches)
+      - [event()](#event)
+      - [width](#width)
+      - [height](#height)
+      - [toggle()](#toggle-1)
+      - [appear()](#appear-1)
+      - [click()](#click)
+    - [Related nodes](#related-nodes)
+      - [parent()](#parent)
+      - [nodes](#nodes)
+      - [children](#children)
+      - [firstEl](#firstel)
+      - [lastEl](#lastel)
+      - [firstNode](#firstnode)
+      - [lastNode](#lastnode)
+      - [sibling()](#sibling)
+      - [after()](#after)
+      - [before()](#before)
+      - [append()](#append)
+      - [prepend()](#prepend)
+      - [el()](#el-1)
+      - [all()](#all-1)
+      - [contains()](#contains)
+    - [Working with classes](#working-with-classes)
+      - [hasClass()](#hasclass)
+      - [addClass()](#addclass)
+      - [removeClass()](#removeclass)
+      - [toggleClass()](#toggleclass)
+      - [classList](#classlist)
   - [Creating components](#creating-components)
   - [Hiding or showing elements](#hiding-or-showing-elements)
     - [Toggle the state of an element](#toggle-the-state-of-an-element)
-    - [Hide an element after it losts the focus or a click outside it](#hide-an-element-after-it-losts-the-focus-or-a-click-outside-it)
+    - [Hide an element after it losts the focus or a click outside it (not recomended)](#hide-an-element-after-it-losts-the-focus-or-a-click-outside-it-not-recomended)
     - [Hide the element after moving the mouse to outside it](#hide-the-element-after-moving-the-mouse-to-outside-it)
     - [Programmatically show or hide an element](#programmatically-show-or-hide-an-element)
     - [Example](#example)
@@ -121,6 +159,167 @@ lunar.clickOut(dd, e => {
 ```
 In this example, we listen for a click in a element that is not the _dd_ element, and we pass a closure (the handle function) to handle this event. This closure receives a parameter (it uses the addEventListener method), that is an object describing that event. Inside that closure, we verify if the target element is an element inside _dd_, just to be sure that the click was outside it, and we call the hide() method in case of a click outside it. See the documentation about the [addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
 
+## The Lunar Elements
+Sometimes maybe hard or tiring to work with the defaults properties and methods of the elements and commonly our scripts compound a lot of code, that makes them sometimes difficult to undestand and find some error or bug. Due to this, the LunarElement class provides some very useful methods, that simplifies the most common tasks on working with elements. When you create an instance of that class, you need to pass a selector or an Element instance:
+```javascript
+let el = lunar.el('#navbar');
+
+// or
+let navbar = document.querySelector('#navbar');
+let el = lunar.el(navbar);
+```
+The el() method returns an instance of the LunarElement class with the given element. See below the list of methods and properties present in this class.
+
+### About the element
+
+#### type
+This property simply returns the type of the current element:
+```javascript
+console.log(lunar.el('div').type); // div
+```
+
+#### id
+Returns the id of the element:
+```javascript
+console.log(lunar.el('#a').id); // a
+```
+
+#### html()
+Inserts an HTML code into the element or return the HTML content if the parameter is given:
+```javascript
+let c = lunar.el('div').html();
+console.log(c);
+
+lunar.el('div').html('<button>click</button>');
+```
+
+#### text()
+It does the same as the _html()_ method, but for text contents:
+```javascript
+let c = lunar.el('div').text();
+console.log(c);
+
+lunar.el('div').text('<button>click</button>'); // See the difference from the html() method
+```
+
+#### attr()
+This method returns the value of the given attribute and sets a new value if you pass it as a second parameter:
+```javascript
+let div = lunar.el('div');
+
+console.log(div.attr('class'));
+div.attr('class', 'class1 class2');
+console.log(div.attr('class'));
+```
+
+#### hasAttr()
+Returns true if the element has the given attribute.
+
+#### removeAttr()
+It removes the given attribute from the element and returns the object itself.
+
+#### matches()
+Returns true if the current element matches with the given selectors. The argument is a string of valid CSS selectors.
+
+#### event()
+It is a shortcut for the addEventListener() method:
+```javascript
+lunar.el('div').event('click', e => {
+  console.log(e);
+});
+```
+
+#### width
+This property contains current width of the element.
+
+#### height
+The current height of the element.
+
+#### toggle()
+It does the same effect as the _lunar.toggle()_ to the current element.
+
+#### appear()
+It dows the same effect as the _lunar.appear()_ to the current element.
+
+#### click()
+This method calls the element.click() function, that fires the element's click event.
+
+### Related nodes
+#### parent()
+Returns the parent element of the current element. You can pass a number as a parameter informing the parent order of the element:
+```html
+<section>
+  <div><button>Button</button></div>
+</section>
+
+<script>
+  let btn = lunar.el('button');
+  console.log(btn.parent(2)); // Object { pure: section }
+</script>
+```
+The default value for the order is 1.
+
+#### nodes
+A property containing all the child nodes of the element.
+
+#### children
+A property with all the child elements of the current element.
+
+#### firstEl
+It returns the first element node of the current element.
+
+#### lastEl
+It returns the last element node of the element.
+
+#### firstNode
+The first node inside the element.
+
+#### lastNode
+The last node inside the element.
+
+#### sibling()
+This method returns the sibling Node after or before the current element. This method gets a parameter called order, whose default value is 1. When the order parameter is 1, the method returns the current element. Values greater than one return the next nth sibling of the element, while negative values return the nth sibling before the element.
+
+#### after()
+This method receives any number of elements (LunarElement or Node) to be added after the current element.
+```javascript
+lunar.el('.list-title').after(item1, item2, ...);
+```
+
+#### before()
+It does the same as the _after()_ method, but inserts the elements before the current element.
+
+#### append()
+It is very similar to the _after()_, but the elements are inserted inside the current element and after its last child.
+
+#### prepend()
+It does the same as the _append()_ function, but the elements are inserted before the child node of the current element.
+
+#### el()
+Works like the _lunar.el()_ function, but searchs for an element inside the current one.
+
+#### all()
+Works like the _lunar.all()_ function, but searchs for elements inside the current one.
+
+#### contains()
+It verifies if the given element (Node or LunarElement) is inside the current one, returning true in the positive case and false in the case of not.
+
+### Working with classes
+#### hasClass()
+It returns true if the current element has that given class name.
+
+#### addClass()
+It adds the given class name to the element.
+
+#### removeClass()
+It removes the given class name.
+
+#### toggleClass()
+This method receives any number of parameters, each one with a class name. Then, all these class names are toggled. It is a very useful method.
+
+#### classList
+This property returns a [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList) collection of the class attributes of the element, and also can be used to manipulate the class list.
+
 ## Creating components
 
 You can create a component easily. First of all, to register a component we need to pass an array containing all the components we have created, to call the _lunar.register()_ method, which receives this array. Now, just create an array of components. A component is an object with two elements: an HTML, obviously, and a selector. See the example below:
@@ -172,9 +371,9 @@ Sometimes we need to show an element after a click on another element and hide i
 <div class="text" hideable>Hello :)</div>
 ```
 
-The _hideable_ atribute just tells that this element must start hidden, while the _data-hidecontrols_ tells which element will be controlled by this element. This way, a click on the first _div_ will show the second one, another click will hide. You can also put the _data-hidecontrols_ in more than one element to controlls the same one.
+The _hideable_ atribute just tells that this element must start hidden, while the _data-hidecontrols_ tells which element will be controlled by this element. This way, a click on the first _div_ will show the second one, another click will hide. You can also put the _data-hidecontrols_ in more than one element to controlls the same one. Note that the element, after visible, is made hidden after a click outside it and outside the element that calls it.
 
-### Hide an element after it losts the focus or a click outside it
+### Hide an element after it losts the focus or a click outside it (not recomended)
 
 This may be a highly useful tool, sometimes. With it, a user can click on a button to show something, click on another and the first one will be hidden, because it simply lost the focus. Se the following example:
 
