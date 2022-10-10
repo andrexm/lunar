@@ -1,4 +1,4 @@
-import { LunarHTMLElement } from "./LunarHTMLElement.js";
+import { LunarElement } from "./LunarElement.js";
 import modifiers from "./modifiers.js";
 
 /**
@@ -53,7 +53,7 @@ export const helpers = {
             if (el.classList.contains('l-shc')) return;
 
             el.addEventListener('click', () => {
-                let hideableTarget = (new LunarHTMLElement(el.dataset.hidecontrols)).pure;
+                let hideableTarget = (new LunarElement(el.dataset.hidecontrols)).pure;
                 let isHidden = hideableTarget.classList.contains('lunar-hidden');
                 this.showElement(hideableTarget, isHidden);
 

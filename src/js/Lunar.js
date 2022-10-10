@@ -1,4 +1,4 @@
-import { LunarHTMLElement } from "./LunarHTMLElement.js";
+import { LunarElement } from "./LunarElement.js";
 import { helpers } from "./helpers.js";
 import { Store } from "./store.js";
 
@@ -30,17 +30,17 @@ export class Lunar {
     }
 
     /**
-     * Returns if the object is a 'pure element' or an instance of the LunarHTMLElement class
+     * Returns if the object is a 'pure element' or an instance of the LunarElement class
      * @param {object} element 
      * @returns bool
      */
     isPure(element) {
-        return !(element instanceof LunarHTMLElement);
+        return !(element instanceof LunarElement);
     }
 
     /**
      * A loop where the closure object receives the pure element or node in each iteration
-     * @param {LunarHTMLElement[]|Node[]} elements 
+     * @param {LunarElement[]|Node[]} elements 
      * @param {*} closure 
      */
     iterate(elements, closure) {
@@ -54,7 +54,7 @@ export class Lunar {
      * Selects an element
      */
      el(selector) {
-        let e = (new LunarHTMLElement(selector));
+        let e = (new LunarElement(selector));
         if (!e.pure) return null;
         return e;
     }
@@ -68,12 +68,12 @@ export class Lunar {
         // Returns all the elements
         if (pure) return elements;
 
-        // Converts all the elements to LunarHTMLElement
+        // Converts all the elements to LunarElement
         let lunarElements = [];
         elements.forEach(el => {
             lunarElements = [
                 ...lunarElements,
-                (new LunarHTMLElement(el))
+                (new LunarElement(el))
             ];
         });
 
@@ -83,7 +83,7 @@ export class Lunar {
     /**
      * Creates a new element
      * @param {string} type the element type
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     create(type) {
         let el = document.createElement(type);
@@ -92,7 +92,7 @@ export class Lunar {
 
     /**
      * Hides an element
-     * @param {HTMLElement|LunarHTMLElement} el 
+     * @param {HTMLElement|LunarElement} el 
      */
     hide(el) {
         if (!this.isPure(el)) return helpers.showElement(el.pure, false);
@@ -112,7 +112,7 @@ export class Lunar {
      * The element to appears on the top of the visible area
      * @param {string} selector the element selector
      * @param {object} opts scrollIntoViewOptions
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     appear(selector, opts = null) {
         return lunar.el(selector).appear(opts);
@@ -136,7 +136,7 @@ export class Lunar {
 
     /**
      * Executes a closure on a click outside the given element
-     * @param {object|LunarHTMLElement} element 
+     * @param {object|LunarElement} element 
      * @param {object} closure 
      * @returns void
      */

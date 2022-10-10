@@ -1,7 +1,7 @@
 /**
  * Element class
  */
- export class LunarHTMLElement {
+ export class LunarElement {
     // The HTML Element
     pure;
 
@@ -53,7 +53,7 @@
      * Returns or sets a attribute value
      * @param {string} name 
      * @param {string} value 
-     * @returns {string|LunarHTMLElement}
+     * @returns {string|LunarElement}
      */
     attr(name, value = null) {
         if (!value) return this.pure.getAttribute(name);
@@ -116,7 +116,7 @@
 
     /**
      * Shows or hides itself
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     toggle() {
         lunar.toggle(this);
@@ -133,7 +133,7 @@
     }
 
     /**
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     click() {
         this.pure.click();
@@ -173,7 +173,7 @@
 
     /**
      * The first element child
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     get firstEl() {
         return lunar.el(this.pure.firstElementChild);
@@ -181,7 +181,7 @@
 
     /**
      * The last element child
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     get lastEl() {
         return lunar.el(this.pure.lastElementChild);
@@ -189,7 +189,7 @@
 
     /**
      * The first child
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     get firstNode() {
         return this.pure.firstChild;
@@ -197,7 +197,7 @@
 
     /**
      * The last child
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     get lastNode() {
         return this.pure.lastChild;
@@ -206,7 +206,7 @@
     /**
      * Returns a node sibling before or after the element
      * @param {number} order 
-     * @returns LunarHTMLElement|Node
+     * @returns LunarElement|Node
      */
     sibling(order = 1) {
         let el = this.pure;
@@ -226,7 +226,7 @@
 
     /**
      * Inserts one or multiple elements or nodes after this element
-     * @param {LunarHTMLElement[]|Node[]} arguments 
+     * @param {LunarElement[]|Node[]} arguments 
      */
     after() {
         lunar.iterate(Array.from(arguments), el => {
@@ -237,7 +237,7 @@
 
     /**
      * Inserts one or multiple elements or nodes before this element
-     * @param {LunarHTMLElement[]|Node[]} arguments 
+     * @param {LunarElement[]|Node[]} arguments 
      */
     before() {
         lunar.iterate(Array.from(arguments), el => {
@@ -248,7 +248,7 @@
 
     /**
      * Inserts a set of Node objects after the last child of this element
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     append() {
         lunar.iterate(Array.from(arguments), el => {
@@ -258,7 +258,7 @@
     }
 
     /**
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     prepend() {
         lunar.iterate(Array.from(arguments), el => {
@@ -300,7 +300,7 @@
     /**
      * Adds a class to the element
      * @param {string} name the class name
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     addClass(name) {
         this.pure.classList.add(name);
@@ -310,7 +310,7 @@
     /**
      * Removes a class from the element
      * @param {string} name the class name
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     removeClass(name) {
         this.pure.classList.remove(name);
@@ -320,7 +320,7 @@
     /**
      * Toggles one or more classes from the element
      * @param {string} name the class name
-     * @returns LunarHTMLElement
+     * @returns LunarElement
      */
     toggleClass() {
         Array.from(arguments).forEach(name => {
