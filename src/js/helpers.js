@@ -46,14 +46,14 @@ export const helpers = {
      * Elements that controls hideable elements
      */
     hideControllersStart() {
-        this.hideControllers = Array.from(document.querySelectorAll('[data-hidecontrols]'));
+        this.hideControllers = Array.from(document.querySelectorAll('[data-toggle]'));
  
         this.hideControllers.forEach(el => {
             // Verify if this element is loaded
             if (el.classList.contains('l-shc')) return;
 
             el.addEventListener('click', () => {
-                let hideableTarget = (new LunarElement(el.dataset.hidecontrols)).pure;
+                let hideableTarget = (new LunarElement(el.dataset.toggle)).pure;
                 let isHidden = hideableTarget.classList.contains('lunar-hidden');
                 this.showElement(hideableTarget, isHidden);
 

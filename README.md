@@ -367,11 +367,11 @@ Lunar has some very useful tools to hide or show an element. It has the followin
 Sometimes we need to show an element after a click on another element and hide it after another click. We need simply to add some attributes to this purpuse:
 
 ```html
-<div data-hidecontrols=".text">Toggle element</div>
+<div data-toggle=".text">Toggle element</div>
 <div class="text" hideable>Hello :)</div>
 ```
 
-The _hideable_ atribute just tells that this element must start hidden, while the _data-hidecontrols_ tells which element will be controlled by this element. This way, a click on the first _div_ will show the second one, another click will hide. You can also put the _data-hidecontrols_ in more than one element to controlls the same one. Note that the element, after visible, is made hidden after a click outside it and outside the element that calls it.
+The _hideable_ atribute just tells that this element must start hidden, while the _data-toggle_ tells which element will be controlled by this element. This way, a click on the first _div_ will show the second one, another click will hide. You can also put the _data-toggle_ in more than one element to controlls the same one. Note that the element, after visible, is made hidden after a click outside it and outside the element that calls it.
 
 ### Hide an element after it losts the focus or a click outside it (not recomended)
 
@@ -384,7 +384,7 @@ This may be a highly useful tool, sometimes. With it, a user can click on a butt
 We can combine both the two last utilities showed until now:
 
 ```html
-<div data-hidecontrols=".text">Toggle element</div>
+<div data-toggle=".text">Toggle element</div>
 <div class="text" hideable hideOnClickOutside>Hello :)</div>
 ```
 
@@ -396,7 +396,7 @@ Sometimes is more useful to hide the element after the mouse goes away from it. 
 <div hideOnMouseLeave>Don't forget me 😢</div>
 ```
 
-As in the previous tool, we can combine it with the _data-hidecontrols_ to create a more dynamic functionality.
+As in the previous tool, we can combine it with the _data-toggle_ to create a more dynamic functionality.
 
 ### Programmatically show or hide an element
 
@@ -416,10 +416,10 @@ You can pass to these functions both common elements and an instance of the Luna
 
 ### Example
 
-In this example, we have a button that shows the alert message after clicking on it. The alert message is a component that also contains another component inside it, an icon. There is two icons registered as components in this code, the first one comes from HeroIcons and the second one from Bootstrap Icons. In the HTML, the code is very clean, mainly when we need to reuse some component, like the icons of the example. Also, the alert component contains a _span_ tag, which can close the alert if clicked due to the _data-hidecontrols_ attribute with a selector pointing to the alert itself.
+In this example, we have a button that shows the alert message after clicking on it. The alert message is a component that also contains another component inside it, an icon. There is two icons registered as components in this code, the first one comes from HeroIcons and the second one from Bootstrap Icons. In the HTML, the code is very clean, mainly when we need to reuse some component, like the icons of the example. Also, the alert component contains a _span_ tag, which can close the alert if clicked due to the _data-toggle_ attribute with a selector pointing to the alert itself.
 
 ```html
-<div class="btn-primary" data-hidecontrols="#success-msg">
+<div class="btn-primary" data-toggle="#success-msg">
     <icon-download data-class="h-10 w-10"></icon-download> Download
 </div>
 <app-alert></app-alert>
@@ -434,7 +434,7 @@ In this example, we have a button that shows the alert message after clicking on
             html: `
                 <div class="alert" hideable id="success-msg">
                     <icon-exclamation data-class="h-10 w-10"></icon-exclamation> Downloading...
-                    <span data-hidecontrols="#success-msg">Close</span>
+                    <span data-toggle="#success-msg">Close</span>
                 </div>`,
             selector: 'app-alert'
         },
