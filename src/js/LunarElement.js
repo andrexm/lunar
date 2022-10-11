@@ -168,7 +168,7 @@
      * @returns HTMLCollection
      */
     get children() {
-        return this.pure.children;
+        return this.all('*');
     }
 
     /**
@@ -282,7 +282,17 @@
      * @returns Node
      */
     all(selector, pure = false) {
-        return lunar.all(selector, pure);
+        let res = Array.from(this.pure.querySelectorAll(selector));
+        if (pure) return res;
+
+        let le = [];
+        res.forEach(el => {
+            le = [
+                ...le,
+                lunar.el(el)
+            ];
+        });
+        return le;
     }
 
     /**
