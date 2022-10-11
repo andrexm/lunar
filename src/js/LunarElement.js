@@ -168,7 +168,17 @@
      * @returns HTMLCollection
      */
     get children() {
-        return this.all('*');
+        let children = Array.from(this.pure.children);
+        let childrenLE = [];
+
+        children.forEach(child => {
+            childrenLE = [
+                ...childrenLE,
+                lunar.el(child)
+            ];
+        });
+
+        return childrenLE;
     }
 
     /**
