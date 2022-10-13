@@ -12,6 +12,9 @@ export class Lunar {
     // The store object
     store;
 
+    // The components avaiable
+    custom = [];
+
     /**
      * Constructor
      */
@@ -148,9 +151,11 @@ export class Lunar {
      * Registers some components
      * @param {array} components 
      */
-    register(components) {
+    register(components, append = true) {
         // Load the components
         components.forEach(component => {
+            if (append) this.custom = [...this.custom, component]; // Register a new component in Lunar also
+
             let elements = Array.from(document.querySelectorAll(component.selector));
             elements.forEach(el => {
                 el.innerHTML = component.html;
@@ -190,5 +195,12 @@ export class Lunar {
         helpers.hideOnClickOutside();
         helpers.loadModifiers();
         helpers.loadModifiers(this.modifiers);
+    }
+
+    /**
+     * Reloads all the custom components
+     */
+    loadUtils() {
+        this.register(this.custom, false);
     }
 }
