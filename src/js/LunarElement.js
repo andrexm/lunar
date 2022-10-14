@@ -311,7 +311,7 @@
      * @returns boolean
      */
     contains(element) {
-        element = isPure(element) ? element : element.pure;
+        element = lunar.isPure(element) ? element : element.pure;
         return this.pure.contains(element);
     }
 
