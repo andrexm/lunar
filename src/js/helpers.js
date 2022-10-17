@@ -65,7 +65,7 @@ export const helpers = {
                     let oneOfThem = false;
 
                     similar.forEach(similarEl => {
-                        oneOfThem = oneOfThem || e.target === similarEl;
+                        oneOfThem = oneOfThem || (e.target === similarEl || similarEl.contains(e.target));
                     });
                     
                     // Hides the element if the click was outside all the [data-toggle=el.dataset.toggle]
