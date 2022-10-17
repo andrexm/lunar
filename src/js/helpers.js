@@ -44,6 +44,7 @@ export const helpers = {
 
     /**
      * Elements that controls hideable elements
+     * * This feature needs improvement
      */
     hideControllersStart() {
         this.hideControllers = Array.from(document.querySelectorAll('[data-toggle]'));
@@ -59,7 +60,16 @@ export const helpers = {
 
                 // Closes the hideableTarget element after clicking outside it and outside the 'el'
                 this.clickOutside(hideableTarget, e => {
-                    if (e.target !== el) this.showElement(hideableTarget, false);
+                    // Takes all the elements containing a toggle for the same element
+                    let similar = Array.from(document.querySelectorAll(`[data-toggle='${el.dataset.toggle}']`));
+                    let oneOfThem = false;
+
+                    similar.forEach(similarEl => {
+                        oneOfThem = oneOfThem || e.target === similarEl;
+                    });
+                    
+                    // Hides the element if the click was outside all the [data-toggle=el.dataset.toggle]
+                    if (!oneOfThem) this.showElement(hideableTarget, false);
                 });
             });
 
