@@ -283,7 +283,7 @@
      * @returns Node
      */
     el(selector) {
-        return lunar.el(selector);
+        return lunar.el(this.pure.querySelector(selector));
     }
 
     /**
