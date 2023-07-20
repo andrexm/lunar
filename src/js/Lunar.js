@@ -1,6 +1,7 @@
 import { LunarElement } from "./LunarElement.js";
 import { helpers } from "./helpers.js";
 import { Store } from "./store.js";
+import { Ajax } from "./ajax.js";
 
 /**
  * Lunar
@@ -202,5 +203,14 @@ export class Lunar {
      */
     loadUtils() {
         this.register(this.custom, false);
+    }
+
+    /**
+     * Ajax request method
+     * @param {Opts} opts 
+     * @returns Ajax
+     */
+    ajax(opts) {
+        return (new Ajax(opts));
     }
 }
