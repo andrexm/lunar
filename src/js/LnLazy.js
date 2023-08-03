@@ -1,11 +1,12 @@
 export class LnLazy extends HTMLElement {
-	#loaded;
-    #pos;
+	#isLoaded;
+    #pos; // the element y position
+    loaded = () => {}; // closure to be executed after loading the component
 
 	constructor() {
 		super();
         this.style.paddingTop = "400px";
-        this.#loaded = false;
+        this.#isLoaded = false;
         this.#pos = this.getBoundingClientRect().top + window.scrollY;
         this.start(window.innerHeight >= this.getBoundingClientRect().top);
 	}
@@ -15,7 +16,7 @@ export class LnLazy extends HTMLElement {
      * @returns boolean
      */
     #render(visible) {
-        if (this.#loaded) return false;
+        if (this.#isLoaded) return false;
         
         if (window.scrollY + window.innerHeight + Number(this.getAttribute('dis') ?? 400) >= this.#pos || visible) {
             let src = this.getAttribute('src');
@@ -27,12 +28,13 @@ export class LnLazy extends HTMLElement {
                 },
                 success: data => {
                     this.innerHTML = data;
-                    this.#loaded = true;
-                    lunar.loadHelpers();
+                    this.#isLoaded = true;
+                    lunar.loadHelpers(); // the component can use lunar
+                    this.loaded(); // run custom scripts for the component
                 },
                 error: () => {
-                    console.error('The component ' + src + ' cannot be #loaded.');
-                    this.#loaded = true;
+                    console.error('The component ' + src + ' cannot be #isLoaded.');
+                    this.#isLoaded = true;
                 }
             }).send();
             this.style.paddingTop = "0px";
