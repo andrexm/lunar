@@ -4,6 +4,7 @@ export class LnLazy extends HTMLElement {
 	constructor() {
 		super();
 		this.start();
+        this.style.paddingTop = "400px";
 	}
 
 	/**
@@ -15,7 +16,6 @@ export class LnLazy extends HTMLElement {
 		document.addEventListener('scroll', () => {
             if (this.#loaded) return false;
 
-            console.log('listening...')
             if (window.scrollY + window.innerHeight + Number(this.getAttribute('dis') ?? 400) >= pos) {
                 let src = this.getAttribute('src');
                 lunar.ajax({
@@ -30,8 +30,10 @@ export class LnLazy extends HTMLElement {
                     },
                     error: () => {
                         console.error('The component ' + src + ' cannot be loaded.');
+                        this.#loaded = true;
                     }
                 }).send();
+                this.style.paddingTop = "0px";
             }
         });
 	}
