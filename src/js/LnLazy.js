@@ -28,6 +28,7 @@ export class LnLazy extends HTMLElement {
                 success: data => {
                     this.innerHTML = data;
                     this.#loaded = true;
+                    lunar.loadHelpers();
                 },
                 error: () => {
                     console.error('The component ' + src + ' cannot be #loaded.');
