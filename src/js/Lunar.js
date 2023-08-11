@@ -1,6 +1,6 @@
 import { LunarElement } from "./LunarElement.js";
 import { helpers } from "./helpers.js";
-import { Store } from "./store.js";
+import { Store } from "./Store.js";
 import { Ajax } from "./ajax.js";
 
 /**

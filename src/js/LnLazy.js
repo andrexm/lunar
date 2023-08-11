@@ -22,10 +22,7 @@ export class LnLazy extends HTMLElement {
             let src = this.getAttribute('src');
             lunar.ajax({
                 method: 'GET',
-                url: src,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
+                url: src, 
                 success: data => {
                     this.innerHTML = data;
                     this.#isLoaded = true;
@@ -33,7 +30,7 @@ export class LnLazy extends HTMLElement {
                     this.loaded(); // run custom scripts for the component
                 },
                 error: () => {
-                    console.error('The component ' + src + ' cannot be #isLoaded.');
+                    console.error('The component ' + src + ' cannot be loaded.');
                     this.#isLoaded = true;
                 }
             }).send();
