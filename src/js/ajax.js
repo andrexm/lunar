@@ -33,7 +33,7 @@ export class Ajax {
         this.#onreadystatechange();
         this.#httpRequest.open(this.#method, this.#opts.url); // Open the request
         this.#headers();
-        this.#httpRequest.send(this.#opts.data || null); // Send
+        this.#httpRequest.send(JSON.stringify(this.#opts.data) || null); // Send
     }
 
     /**
